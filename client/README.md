@@ -1,18 +1,128 @@
-# React + Vite
+# TaskFlow -- Role-Based Project & Task Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+TaskFlow is a full‑stack role-based project and task management
+application built with React (Vite), Redux Toolkit, Tailwind CSS,
+Node.js, Express, Sequelize, and MySQL.
 
-Currently, two official plugins are available:
+It implements authentication using JWT stored in httpOnly cookies and
+provides three separate dashboards for Admin, Manager, and User with
+proper role protection.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+------------------------------------------------------------------------
 
-## React Compiler
+## 🚀 Tech Stack
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+### Frontend
 
-Note: This will impact Vite dev & build performances.
+-   React (Vite)
+-   Redux Toolkit
+-   React Router
+-   Tailwind CSS
+-   Axios
 
-## Expanding the ESLint configuration
+### Backend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-   Node.js
+-   Express.js
+-   Sequelize ORM
+-   MySQL
+-   JWT Authentication (Cookies)
+
+------------------------------------------------------------------------
+
+## 📁 Project Structure
+
+    blackbucks/
+     ├── client/      # React + Vite frontend
+     └── server/      # Node + Express backend
+
+------------------------------------------------------------------------
+
+## ⚙️ Backend Setup
+
+``` bash
+cd server
+npm install
+npm run dev
+```
+
+Make sure you create a `.env` file in the server folder with:
+
+    PORT=5000
+    DB_NAME=your_db_name
+    DB_USER=your_db_user
+    DB_PASS=your_db_password
+    JWT_SECRET=your_secret_key
+
+------------------------------------------------------------------------
+
+## 🎨 Frontend Setup
+
+``` bash
+cd client
+npm install
+npm run dev
+```
+
+------------------------------------------------------------------------
+
+## 🔐 Test Credentials
+
+### Admin
+
+-   Email: admin@test.com
+-   Password: admin123
+
+### Manager
+
+-   Email: manager@test.com
+-   Password: manager123
+
+### User
+
+-   Email: user@test.com
+-   Password: user123
+
+------------------------------------------------------------------------
+
+## ✅ Features
+
+### Admin
+
+-   Create Manager and User accounts
+-   View all users
+
+### Manager
+
+-   Create projects
+-   Create tasks
+-   Assign tasks to users
+
+### User
+
+-   View assigned tasks
+-   Update task status (Todo → In Progress → Done)
+
+------------------------------------------------------------------------
+
+## 🔒 Security
+
+-   JWT stored in httpOnly cookies
+-   Role-based route protection
+-   Backend authorization middleware
+
+------------------------------------------------------------------------
+
+## 🧪 How to Test
+
+1.  Login as Admin → create Manager and User
+2.  Login as Manager → create Project and Task
+3.  Login as User → view and update task status
+
+------------------------------------------------------------------------
+
+## 📌 Notes
+
+-   Tailwind CSS is used for UI styling
+-   Axios is configured with `withCredentials: true`
+-   All routes are protected both on frontend and backend
