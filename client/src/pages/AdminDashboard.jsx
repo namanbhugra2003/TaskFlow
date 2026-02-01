@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { getUsers, createUser } from "../services/userApi";
 import Navbar from "../components/Navbar";
+import { useSelector } from "react-redux";
+
+const { user } = useSelector((state) => state.auth);
 
 export default function AdminDashboard() {
   const [users, setUsers] = useState([]);
@@ -16,10 +19,11 @@ export default function AdminDashboard() {
     setUsers(res.data);
   };
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
+ useEffect(() => {
+  if (user) {
+    fetchData();
+  }
+}, [user]);
   const handleCreate = async () => {
     await createUser(form);
     fetchUsers();
