@@ -3,6 +3,8 @@ import { getProjects, createProject } from "../services/projectApi";
 import { createTask } from "../services/taskApi";
 import { getEmployees } from "../services/userApi";
 import Navbar from "../components/Navbar";
+import { useSelector } from "react-redux";
+const { user } = useSelector((state) => state.auth);
 
 export default function ManagerDashboard() {
   const [projects, setProjects] = useState([]);
@@ -26,9 +28,11 @@ export default function ManagerDashboard() {
     setUsers(u.data);
   };
 
-  useEffect(() => {
+useEffect(() => {
+  if (user) {
     fetchData();
-  }, []);
+  }
+}, [user]);
 
   const handleProjectCreate = async () => {
     await createProject(projectForm);
