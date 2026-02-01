@@ -4,7 +4,7 @@ const { authorizeRoles } = require('../middlewares/roleMiddleware');
 const {
   createProject,
   getAllProjects,
-} = require('../controllers/projectcontroller');
+} = require('../controllers/projectController');
 
 router.post('/', protect, authorizeRoles('manager'), createProject);
 router.get('/', protect, getAllProjects);
