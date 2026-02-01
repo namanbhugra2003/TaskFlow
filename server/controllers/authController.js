@@ -26,7 +26,8 @@ exports.login = async (req, res) => {
 exports.logout = (req, res) => {
   res.clearCookie("token", {
     httpOnly: true,
-    sameSite: "lax",
+  secure: true,
+  sameSite: "none",
     path: "/",
   });
 
