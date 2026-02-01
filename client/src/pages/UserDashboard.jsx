@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { getMyTasks, updateTask } from "../services/taskApi";
 import Navbar from "../components/Navbar";
+import { useSelector } from "react-redux";
+
+const { user } = useSelector((state) => state.auth);
 
 export default function UserDashboard() {
   const [tasks, setTasks] = useState([]);
@@ -10,9 +13,11 @@ export default function UserDashboard() {
     setTasks(res.data);
   };
 
-  useEffect(() => {
-    fetchTasks();
-  }, []);
+ useEffect(() => {
+  if (user) {
+    fetchData();
+  }
+}, [user]);
 
   const changeStatus = async (id, status) => {
     await updateTask(id, { status });
