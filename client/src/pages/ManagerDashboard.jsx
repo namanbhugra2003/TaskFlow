@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 
 
 export default function ManagerDashboard() {
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth.user);
   const [projects, setProjects] = useState([]);
   const [users, setUsers] = useState([]);
 
