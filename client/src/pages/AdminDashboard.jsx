@@ -3,9 +3,10 @@ import { getUsers, createUser } from "../services/userApi";
 import Navbar from "../components/Navbar";
 import { useSelector } from "react-redux";
 
-const { user } = useSelector((state) => state.auth);
 
 export default function AdminDashboard() {
+  const { user } = useSelector((state) => state.auth);
+
   const [users, setUsers] = useState([]);
   const [form, setForm] = useState({
     name: "",
