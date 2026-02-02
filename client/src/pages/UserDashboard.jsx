@@ -16,7 +16,7 @@ export default function UserDashboard() {
 
  useEffect(() => {
   if (user) {
-    fetchData();
+    fetchTasks();
   }
 }, [user]);
 
