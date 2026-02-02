@@ -4,9 +4,10 @@ import { createTask } from "../services/taskApi";
 import { getEmployees } from "../services/userApi";
 import Navbar from "../components/Navbar";
 import { useSelector } from "react-redux";
-const { user } = useSelector((state) => state.auth);
+
 
 export default function ManagerDashboard() {
+  const { user } = useSelector((state) => state.auth);
   const [projects, setProjects] = useState([]);
   const [users, setUsers] = useState([]);
 
