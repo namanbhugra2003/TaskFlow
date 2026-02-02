@@ -22,7 +22,7 @@ export default function AdminDashboard() {
 
  useEffect(() => {
   if (user) {
-    fetchData();
+    fetchUsers();
   }
 }, [user]);
   const handleCreate = async () => {
