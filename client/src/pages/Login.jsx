@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../features/authSlice";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -6,10 +6,16 @@ import { useState } from "react";
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { error } = useSelector((state) => state.auth);
+
   const [form, setForm] = useState({ email: "", password: "" });
 
   const handleLogin = async () => {
     const res = await dispatch(login(form));
+
+    // If login failed
+    if (res.type.includes("rejected")) return;
+
     const role = res.payload.role;
 
     if (role === "admin") navigate("/admin");
@@ -52,6 +58,13 @@ export default function Login() {
               }
             />
           </div>
+
+          {/* ❌ Error message */}
+          {error && (
+            <p className="text-red-500 text-sm text-center font-medium">
+              Invalid credentials
+            </p>
+          )}
 
           <button
             onClick={handleLogin}
