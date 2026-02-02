@@ -3,9 +3,10 @@ import { getMyTasks, updateTask } from "../services/taskApi";
 import Navbar from "../components/Navbar";
 import { useSelector } from "react-redux";
 
-const { user } = useSelector((state) => state.auth);
+
 
 export default function UserDashboard() {
+  const { user } = useSelector((state) => state.auth);
   const [tasks, setTasks] = useState([]);
 
   const fetchTasks = async () => {
